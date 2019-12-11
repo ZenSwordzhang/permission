@@ -1,0 +1,13 @@
+server:
+  context-path: /permission
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  profiles:
+    active: @activatedProperties@
+  application:
+    name: @project.name@_${spring.profiles.active}
+
+

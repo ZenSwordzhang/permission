@@ -1,0 +1,111 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.zsx</groupId>
+        <artifactId>permission</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>jeeplatform-admin</artifactId>
+    <name>jeeplatform-admin</name>
+    <packaging>war</packaging>
+
+    <properties>
+        <shiro.version>1.2.3</shiro.version>
+        <shiro.spring.version>1.2.4</shiro.spring.version>
+        <shiro.encache.version>1.2.4</shiro.encache.version>
+        <lucene.version>4.7.2</lucene.version>
+        <poi.version>4.1.1</poi.version>
+        <cas.version>3.2.0</cas.version>
+        <shiro.cas.version>1.2.4</shiro.cas.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.zsx</groupId>
+            <artifactId>jeeplatform-common</artifactId>
+            <version>${jeeplatform-common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zsx</groupId>
+            <artifactId>jeeplatform-core</artifactId>
+            <version>${jeeplatform-core.version}</version>
+        </dependency>
+
+        <!-- swagger-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.2.2</version>
+        </dependency>
+
+        <!-- 对JSP的支持-->
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <!--<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+        </dependency>
+        
+        <!-- Shiro -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shiro.spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-ehcache</artifactId>
+            <version>${shiro.encache.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-cas</artifactId>
+            <version>${shiro.cas.version}</version>
+        </dependency>
+
+        <!-- Apache POI -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>${poi.version}</version>
+        </dependency>
+
+        <!-- email -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.5.6</version>
+        </dependency>
+
+        <!-- common -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.5</version>
+        </dependency>
+
+        <!-- cas -->
+        <dependency>
+            <groupId>org.jasig.cas.client</groupId>
+            <artifactId>cas-client-core</artifactId>
+            <version>${cas.version}</version>
+        </dependency>
+
+    </dependencies>
+
+
+    <build>
+        <finalName>jeeplatform-admin</finalName>
+    </build>
+</project>

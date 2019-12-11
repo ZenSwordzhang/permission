@@ -1,0 +1,13 @@
+server:
+  context-path: /permission
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: jeeplatform-admin_${spring.profiles.active}
+
+
