@@ -22,6 +22,7 @@
         <commons-lang3.version>3.9</commons-lang3.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <javax.mail.version>1.6.2</javax.mail.version>
+        <taglibs-standard.version>1.2.5</taglibs-standard.version>
     </properties>
 
     <dependencies>
@@ -54,16 +55,18 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
 
-        <!-- jstl -->
-        <!--<dependency>
-            <groupId>javax.servlet.jsp.jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
-        </dependency>-->
+        <!-- jsp页面渲染所需jar -->
+        <!-- taglibs-standard-spec -->
         <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${jstl.version}</version>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-spec</artifactId>
+            <version>${taglibs-standard.version}</version>
+        </dependency>
+        <!-- taglibs-standard-impl -->
+        <dependency>
+            <groupId>org.apache.taglibs</groupId>
+            <artifactId>taglibs-standard-impl</artifactId>
+            <version>${taglibs-standard.version}</version>
         </dependency>
 
         <!-- Shiro -->

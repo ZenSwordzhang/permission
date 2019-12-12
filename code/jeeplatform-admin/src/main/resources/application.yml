@@ -1,8 +1,9 @@
 server:
-  context-path: /permission
   error:
     whitelabel:
       enabled: true
+  servlet:
+    context-path: /api
 
 spring:
   profiles:

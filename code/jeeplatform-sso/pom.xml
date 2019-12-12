@@ -29,11 +29,11 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.zsx</groupId>
             <artifactId>cas-redis</artifactId>
             <version>${cas-redis.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp</artifactId>
