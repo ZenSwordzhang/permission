@@ -55,12 +55,17 @@
         </dependency>
 
         <!-- jstl -->
-        <dependency>
+        <!--<dependency>
             <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl</artifactId>
             <version>${jstl.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
-        
+
         <!-- Shiro -->
         <dependency>
             <groupId>org.apache.shiro</groupId>
