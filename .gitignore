@@ -23,7 +23,7 @@
 hs_err_pid*
 
 HELP.md
-*/target/*
+*/target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###
@@ -51,3 +51,5 @@ HELP.md
 
 ### VS Code ###
 .vscode/
+
+*/overlays/
