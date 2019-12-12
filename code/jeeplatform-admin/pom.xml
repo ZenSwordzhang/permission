@@ -100,7 +100,6 @@
             <version>${javax.mail.version}</version>
         </dependency>
 
-        <!-- common -->
         <!-- commons-lang3 -->
         <dependency>
             <groupId>org.apache.commons</groupId>

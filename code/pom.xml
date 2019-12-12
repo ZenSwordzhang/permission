@@ -252,24 +252,25 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
-
+			<!-- maven 详细文章 https://www.jianshu.com/p/b07e7dbd8e4c -->
 			<!--<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>2.2.1.RELEASE</version>
-				<configuration>
-					<fork>true</fork>
-                    <mainClass>org.muses.jeeplatform.Application</mainClass>
-				</configuration>
 				<executions>
 					<execution>
 						<goals>
 							<goal>repackage</goal>
 						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>
+								org.muses.jeeplatform.Application
+							</mainClass>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>-->
-
 		</plugins>
 	</build>
 

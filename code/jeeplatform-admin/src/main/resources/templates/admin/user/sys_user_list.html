@@ -105,7 +105,7 @@
                 alert('请选择你要导出的数据!');
                 return;
             }else{
-                window.location.href = "user/exportExcel.do?ids="+str;
+                window.location.href = "user/exportExcel?ids="+str;
             }
         }
 
@@ -125,7 +125,7 @@
                 diag.Title = "发送邮件";
                 diag.Width = 800;
                 diag.Height = 800;
-                diag.URL = "goSendEmail.do?toEmails="+str;
+                diag.URL = "goSendEmail?toEmails="+str;
                 diag.show();
             }
         }
@@ -148,7 +148,7 @@
             diag.Title = "新增管理员";
             diag.Width = 400;
             diag.Height = 300;
-            diag.URL = "goAddU.do";
+            diag.URL = "goAddU";
             diag.show();
         }
 
