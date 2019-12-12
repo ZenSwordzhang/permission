@@ -1,6 +1,7 @@
 package org.muses.jeeplatform.cache;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -11,26 +12,14 @@ import javax.annotation.Resource;
 public class RedisClient {
 
     @Autowired
-    private JedisPool jedisPool;
+    private RedisTemplate redisTemplate;
 
     public void setValue(String key, String value)throws Exception{
-        Jedis jedis = null;
-        try{
-            jedis = jedisPool.getResource();
-            jedis.set(key,value);
-        }finally {
-            jedis.close();
-        }
+        redisTemplate.opsForValue().set(key, value);
     }
 
     public String getValue(String key)throws Exception{
-        Jedis jedis = null;
-        try{
-            jedis = jedisPool.getResource();
-            return jedis.get(key);
-        }finally {
-            jedis.close();
-        }
+        return redisTemplate.opsForValue().get(key).toString();
     }
 
 

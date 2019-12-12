@@ -73,7 +73,7 @@
             num_display_entries : 6,
             current_page : pageIndex,
             num_edge_entries : 1,
-            link_to: "role/queryAll.do?pageIndex=__id__"  //分页的js中会自动把"__id__"替换为当前的数。0
+            link_to: "role/queryAll?pageIndex=__id__"  //分页的js中会自动把"__id__"替换为当前的数。0
         });
 
         var html = "";

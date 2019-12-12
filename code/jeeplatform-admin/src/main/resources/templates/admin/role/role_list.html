@@ -33,7 +33,7 @@
                 num_display_entries : 6,
                 current_page : pageIndex,
                 num_edge_entries : 1,
-                link_to: "role/queryAll.do?pageIndex=__id__"  //分页的js中会自动把"__id__"替换为当前的数。0
+                link_to: "role/queryAll?pageIndex=__id__"  //分页的js中会自动把"__id__"替换为当前的数。0
             });
             /*]]>*/
             var html = "";
@@ -80,7 +80,7 @@
             diag.Title = "授权角色";
             diag.Width = 400;
             diag.Height = 300;
-            diag.URL = "goAuthorise.do?roleId="+roleId;
+            diag.URL = "goAuthorise?roleId="+roleId;
             diag.show();
         }
 
@@ -89,7 +89,7 @@
             diag.Title = "编辑角色";
             diag.Width = 400;
             diag.Height = 300;
-            diag.URL = "goEditR.do?roleId="+roleId;
+            diag.URL = "goEditR?roleId="+roleId;
             diag.show();
         }
 
@@ -98,7 +98,7 @@
             diag.Title = "新增角色";
             diag.Width = 400;
             diag.Height = 300;
-            diag.URL = "goAddR.do";
+            diag.URL = "goAddR";
             diag.show();
         }
 

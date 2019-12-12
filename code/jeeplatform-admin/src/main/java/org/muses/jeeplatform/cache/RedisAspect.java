@@ -76,8 +76,7 @@ public class RedisAspect {
 		}
 		LOGGER.info("**********开始从POSTGRESQL查询数据**********");
 		//后置：将数据库查到的数据保存到Redis
-		String code = redisCache.saveDataToRedis(redisKey,obj);
-		if(code.equals("OK")){
+		if(redisCache.saveDataToRedis(redisKey,obj)){
 			LOGGER.info("**********数据成功保存到Redis缓存!!!**********");
 			LOGGER.info("Redis的KEY值:"+redisKey);
 			LOGGER.info("REDIS的VALUE值:"+obj.toString());
