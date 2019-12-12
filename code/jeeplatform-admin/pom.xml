@@ -14,12 +14,14 @@
 
     <properties>
         <shiro.version>1.2.3</shiro.version>
-        <shiro.spring.version>1.2.4</shiro.spring.version>
-        <shiro.encache.version>1.2.4</shiro.encache.version>
-        <lucene.version>4.7.2</lucene.version>
+        <shiro.spring.version>1.4.2</shiro.spring.version>
+        <shiro.encache.version>1.4.2</shiro.encache.version>
+        <shiro.cas.version>1.4.2</shiro.cas.version>
         <poi.version>4.1.1</poi.version>
-        <cas.version>3.2.0</cas.version>
-        <shiro.cas.version>1.2.4</shiro.cas.version>
+        <cas.version>3.6.1</cas.version>
+        <commons-lang3.version>3.9</commons-lang3.version>
+        <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
+        <javax.mail.version>1.6.2</javax.mail.version>
     </properties>
 
     <dependencies>
@@ -38,23 +40,25 @@
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox-swagger2.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.2.2</version>
+            <version>${springfox-swagger2.version}</version>
         </dependency>
 
         <!-- 对JSP的支持-->
         <dependency>
             <groupId>org.apache.tomcat.embed</groupId>
             <artifactId>tomcat-embed-jasper</artifactId>
-            <!--<scope>provided</scope>-->
         </dependency>
+
+        <!-- jstl -->
         <dependency>
-            <groupId>javax.servlet</groupId>
+            <groupId>javax.servlet.jsp.jstl</groupId>
             <artifactId>jstl</artifactId>
+            <version>${jstl.version}</version>
         </dependency>
         
         <!-- Shiro -->
@@ -85,15 +89,17 @@
         <dependency>
             <groupId>com.sun.mail</groupId>
             <artifactId>javax.mail</artifactId>
-            <version>1.5.6</version>
+            <version>${javax.mail.version}</version>
         </dependency>
 
         <!-- common -->
+        <!-- commons-lang3 -->
         <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.5</version>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
+
 
         <!-- cas -->
         <dependency>

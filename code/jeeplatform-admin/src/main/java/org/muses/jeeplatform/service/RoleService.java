@@ -1,7 +1,5 @@
 package org.muses.jeeplatform.service;
 
-import org.muses.jeeplatform.annotation.RedisCache;
-import org.muses.jeeplatform.common.RedisCacheNamespace;
 import org.muses.jeeplatform.core.dao.repository.admin.RoleRepository;
 import org.muses.jeeplatform.core.entity.admin.Role;
 import org.springframework.beans.factory.annotation.Autowired;

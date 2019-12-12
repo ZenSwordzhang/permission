@@ -15,11 +15,16 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <cas.version>4.2.7</cas.version>
+        <cas-server-webapp.version>4.2.7</cas-server-webapp.version>
+        <cas-server-core.version>4.2.7</cas-server-core.version>
+        <cas-server-webapp-actions.version>4.2.7</cas-server-webapp-actions.version>
+        <cas-server-support-jdbc.version>4.2.7</cas-server-support-jdbc.version>
+        <cas-server-support-rest-services.version>4.2.7</cas-server-support-rest-services.version>
+        <cas-server-core-logout.version>4.2.7</cas-server-core-logout.version>
         <kaptcha.version>2.3.2</kaptcha.version>
-        <pac4j-cas.version>2.0.0-RC1</pac4j-cas.version>
+        <!--<pac4j-cas.version>2.0.0-RC1</pac4j-cas.version>-->
         <log4j2.version>2.8.2</log4j2.version>
-        <disruptor.version>3.3.6</disruptor.version>
+        <disruptor.version>3.4.2</disruptor.version>
         <cas.integration.redis.version>1.1.1-RELEASE</cas.integration.redis.version>
     </properties>
 
@@ -27,55 +32,39 @@
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-webapp.version}</version>
             <type>war</type>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-core</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-core.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-webapp-actions</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-webapp-actions.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-support-rest-services</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-support-rest-services.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-support-jdbc</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-support-jdbc.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.jasig.cas</groupId>
             <artifactId>cas-server-core-logout</artifactId>
-            <version>${cas.version}</version>
+            <version>${cas-server-core-logout.version}</version>
         </dependency>
-
-        <!--<dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-web</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>-->
 
         <dependency>
             <groupId>com.lmax</groupId>
@@ -89,39 +78,11 @@
             <version>${fastjson.version}</version>
         </dependency>
 
-        <!-- 保存Ticket到redis-->
-        <!--<dependency>
-            <groupId>com.github.izerui</groupId>
-            <artifactId>cas-server-integration-redis</artifactId>
-            <version>${cas.integration.redis.version}</version>
-        </dependency>-->
-
         <dependency>
             <groupId>com.github.penggle</groupId>
             <artifactId>kaptcha</artifactId>
             <version>${kaptcha.version}</version>
         </dependency>
-
-        <!--pac4j test start-->
-        <!--<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-cas</artifactId>
-            <version>${pac4j-cas.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.pac4j</groupId>
-            <artifactId>pac4j-core</artifactId>
-            <version>${pac4j-cas.version}</version>
-            <scope>test</scope>
-        </dependency>-->
-        <!--pac4j test end-->
 
     </dependencies>
 
