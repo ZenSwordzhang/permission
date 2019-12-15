@@ -2,11 +2,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%
-    String path = request.getContextPath();
-    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String contextPath = request.getContextPath();
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + contextPath + "/";
 %>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
+    <base href="<%=basePath %>">
     <meta content="text/html;charset=UTF-8"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -15,11 +16,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
-    <script th:src="@{/layui/layui.js}"></script>
-    <script th:src="@{/layui/lay/modules/layer.js}"></script>
-    <link th:href="@{/layui/css/layui.css}" rel="stylesheet">
-    <link th:href="@{/layui/css/modules/layer/default/layer.css}" rel="stylesheet">
-    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <script src="<%=basePath%>layui/layui.js"></script>
+    <script src="<%=basePath%>layui/lay/modules/layer.js"></script>
+    <link href="<%=basePath%>layui/css/layui.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>layui/css/modules/layer/default/layer.css" rel="stylesheet" type="text/css" />
+    <link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         #connect-container {
             margin: 0 auto;
@@ -115,7 +116,7 @@
                 log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
 
                 $.ajax({
-                    url: "/live/chat、user",
+                    url: "<%=contextPath%>/live/chat/user",
                     type: "POST",
                     dataType: "json",
                     async: true,
@@ -138,7 +139,7 @@
         //从服务器拉取未读消息
         function pullUnreadMessage(destination) {
             $.ajax({
-                url: "/wsTemplate/pullUnreadMessage",
+                url: "<%=contextPath%>/live/chat/message",
                 type: "POST",
                 dataType: "json",
                 async: true,
@@ -174,7 +175,7 @@
     <div id="connect-container" class="layui-elem-field">
         <legend>Chat With STOMP Message</legend>
         <div>
-            <input id="target" type="text" class="layui-input" size="40" style="width: 350px" value="/chat-websocket"/>
+            <input id="target" type="text" class="layui-input" size="40" style="width: 350px" value="<%=contextPath%>/chat-websocket"/>
         </div>
         <div>
             <button id="connect" class="layui-btn layui-btn-normal" onclick="connect();">Connect</button>

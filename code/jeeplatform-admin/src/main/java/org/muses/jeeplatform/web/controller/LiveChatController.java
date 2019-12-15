@@ -16,10 +16,7 @@ import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.Principal;
@@ -40,41 +37,10 @@ public class LiveChatController {
     private static final String REDIS_UNREAD_MSG_PREFIX = "redisUnreadMsgPrefix__";
 
     @Autowired
-    private SimpMessagingTemplate messagingTemplate;
-
-    @Autowired
     private SimpUserRegistry userRegistry;
 
     @Autowired
     private RedisTemplate redisTemplate;
-
-
-    /**
-     * 给指定用户发送消息，并处理接收者不在线的情况
-     *
-     * @param sender      消息发送者
-     * @param receiver    消息接收者
-     * @param destination 目的地
-     * @param payload     消息正文
-     */
-    private void sendToUser(String sender, String receiver, String destination, String payload) {
-        SimpUser simpUser = userRegistry.getUser(receiver);
-
-        //如果接收者存在，则发送消息
-        if (simpUser != null && StringUtils.isNoneBlank(simpUser.getName())) {
-            this.messagingTemplate.convertAndSendToUser(receiver, destination, payload);
-        }
-        //否则将消息存储到redis，等用户上线后主动拉取未读消息
-        else {
-            //存储消息的Redis列表名
-            String listKey = REDIS_UNREAD_MSG_PREFIX + receiver + ":" + destination;
-            logger.info(MessageFormat.format("消息接收者{0}还未建立WebSocket连接，{1}发送的消息【{2}】将被存储到Redis的【{3}】列表中", receiver, sender, payload, listKey));
-
-            //存储消息到Redis中
-            redisTemplate.boundListOps(listKey).rightPush(payload);
-        }
-
-    }
 
     // 通过构造器注入，解决循环依赖问题
 //    @Autowired
@@ -85,12 +51,11 @@ public class LiveChatController {
     /**
      * 给指定用户发送WebSocket消息
      *
-     * @param principal
      * @param chat
      */
     @MessageMapping("/user")
-    public void handleChat(Principal principal, Chat chat) {
-        simpMessagingTemplate.convertAndSendToUser(chat.getReceiver(), "/queue/chat", chat);
+    public void handleChat(@RequestBody Chat chat) {
+        simpMessagingTemplate.convertAndSendToUser(chat.getReceiver(), "/topic/reply", chat);
     }
 
     @GetMapping("/list")
@@ -106,7 +71,7 @@ public class LiveChatController {
      * @param destination 指定监听路径
      * @return java.util.Map<java.lang.String, java.lang.Object>
      */
-    @PostMapping("/pullUnreadMessage")
+    @PostMapping("/message")
     @ResponseBody
     public Map<String, Object> pullUnreadMessage(String destination) {
         Map<String, Object> result = new HashMap<>();
@@ -134,5 +99,32 @@ public class LiveChatController {
         }
 
         return result;
+    }
+
+    /**
+     * 给指定用户发送消息，并处理接收者不在线的情况
+     *
+     * @param sender      消息发送者
+     * @param receiver    消息接收者
+     * @param destination 目的地
+     * @param payload     消息正文
+     */
+    private void sendToUser(String sender, String receiver, String destination, String payload) {
+        SimpUser simpUser = userRegistry.getUser(receiver);
+
+        //如果接收者存在，则发送消息
+        if (simpUser != null && StringUtils.isNoneBlank(simpUser.getName())) {
+            simpMessagingTemplate.convertAndSendToUser(receiver, destination, payload);
+        }
+        //否则将消息存储到redis，等用户上线后主动拉取未读消息
+        else {
+            //存储消息的Redis列表名
+            String listKey = REDIS_UNREAD_MSG_PREFIX + receiver + ":" + destination;
+            logger.info(MessageFormat.format("消息接收者{0}还未建立WebSocket连接，{1}发送的消息【{2}】将被存储到Redis的【{3}】列表中", receiver, sender, payload, listKey));
+
+            //存储消息到Redis中
+            redisTemplate.boundListOps(listKey).rightPush(payload);
+        }
+
     }
 }

@@ -38,7 +38,7 @@ CREATE TABLE `sys_menu` (
 
 /*Data for the table `sys_menu` */
 
-insert  into `sys_menu`(`menuId`,`parentId`,`menuName`,`menuIcon`,`menuUrl`,`menuType`,`menuOrder`,`menuStatus`) values (1,0,'用户管理','&#xe610','#','1','1','1'),(2,1,'用户管理','&#xe604','user/queryAll','2','2','1'),(3,1,'用户统计','&#xe604','#','2','3','1'),(4,0,'在线管理','&#xe610','#','1','4','1'),(5,4,'在线情况','&#xe604','#','2','5','1'),(6,4,'在线聊天','&#xe604','article/list','2','6','1'),(7,0,'系统管理','&#xe610','#','1','7','1'),(8,7,'角色管理','&#xe604','role/queryAll','2','8','1'),(9,7,'权限管理','&#xe604','permission/queryAll','2','9','1'),(10,7,'菜单管理','&#xe604','menu/getMenus','2','10','1'),(11,0,'系统监控','&#xe610','druid/index.html','1','11','1'),(12,11,'Druid监控','&#xe610','druid/index.html','1','12','1'),(13,11,'SwaggerUI','&#xe610','swagger-ui.html','1','13','1'),(14,1,'个人信息','&#xe610','#','1','14','1');
+insert  into `sys_menu`(`menuId`,`parentId`,`menuName`,`menuIcon`,`menuUrl`,`menuType`,`menuOrder`,`menuStatus`) values (1,0,'用户管理','&#xe610','#','1','1','1'),(2,1,'用户管理','&#xe604','user/queryAll','2','2','1'),(3,1,'用户统计','&#xe604','#','2','3','1'),(4,0,'在线管理','&#xe610','#','1','4','1'),(5,4,'在线情况','&#xe604','#','2','5','1'),(6,4,'在线聊天','&#xe604','live/chat/list','2','6','1'),(7,0,'系统管理','&#xe610','#','1','7','1'),(8,7,'角色管理','&#xe604','role/queryAll','2','8','1'),(9,7,'权限管理','&#xe604','permission/queryAll','2','9','1'),(10,7,'菜单管理','&#xe604','menu/getMenus','2','10','1'),(11,0,'系统监控','&#xe610','druid/index.html','1','11','1'),(12,11,'Druid监控','&#xe610','druid/index.html','1','12','1'),(13,11,'SwaggerUI','&#xe610','swagger-ui.html','1','13','1'),(14,1,'个人信息','&#xe610','#','1','14','1');
 
 /*Table structure for table `sys_operation` */
 
