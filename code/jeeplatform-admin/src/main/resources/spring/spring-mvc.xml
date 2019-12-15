@@ -21,7 +21,7 @@
   	<!--<mvc:interceptors>-->
 		<!--<mvc:interceptor>-->
 			<!--<mvc:mapping path="/**/**"/>-->
-			<!--<bean class="org.muses.jeeplatform.web.interceptor.LoginInterceptor"/>-->
+			<!--<bean class="org.muses.jeeplatform.web.interceptor.AuthHandshakeInterceptor"/>-->
 		<!--</mvc:interceptor>-->
 	<!--</mvc:interceptors>-->
 	<!--&lt;!&ndash; 网站访问拦截器配置 end &ndash;&gt;-->

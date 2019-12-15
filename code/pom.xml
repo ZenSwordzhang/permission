@@ -38,6 +38,8 @@
 		<postgresql.version>42.2.8</postgresql.version>
 		<jedis.version>3.1.0</jedis.version>
 		<log4j-core.version>2.12.1</log4j-core.version>
+		<tomcat-embed-websocket.version>9.0.30</tomcat-embed-websocket.version>
+		<websocket-server.version>9.4.24.v20191120</websocket-server.version>
 	</properties>
 
 	<parent>
@@ -65,6 +67,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		<!-- websocket -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -74,6 +81,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<!-- tomcat-embed-websocket -->
+		<!--<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+			<version>${tomcat-embed-websocket.version}</version>
+		</dependency>-->
+		<!-- websocket-server -->
+		<dependency>
+			<groupId>org.eclipse.jetty.websocket</groupId>
+			<artifactId>websocket-server</artifactId>
+			<version>${websocket-server.version}</version>
 		</dependency>
 		<!-- junit5运行所需jar包 -->
 		<dependency>
