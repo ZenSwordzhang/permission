@@ -20,7 +20,7 @@
     <script src="<%=basePath%>layui/lay/modules/layer.js"></script>
     <link href="<%=basePath%>layui/css/layui.css" rel="stylesheet" type="text/css" />
     <link href="<%=basePath%>layui/css/modules/layer/default/layer.css" rel="stylesheet" type="text/css" />
-    <link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />
+    <%--<link href="<%=basePath%>css/style.css" rel="stylesheet" type="text/css" />--%>
     <style type="text/css">
         #connect-container {
             margin: 0 auto;
@@ -85,10 +85,10 @@
                 log('Info: STOMP connection opened.');
 
                 //连接成功后，主动拉取未读消息
-                pullUnreadMessage("/topic/reply");
+                pullUnreadMessage("/live/chat/message");
 
                 //订阅服务端的/topic/reply地址
-                stompClient.subscribe("/user/topic/reply", function (response) {
+                stompClient.subscribe("/topic/reply", function (response) {
                     log(JSON.parse(response.body).content);
                 })
             },function () {
@@ -116,7 +116,7 @@
                 log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
 
                 $.ajax({
-                    url: "<%=contextPath%>/live/chat/user",
+                    url: "/api/live/chat/user",
                     type: "POST",
                     dataType: "json",
                     async: true,
@@ -139,7 +139,7 @@
         //从服务器拉取未读消息
         function pullUnreadMessage(destination) {
             $.ajax({
-                url: "<%=contextPath%>/live/chat/message",
+                url: "/api/live/chat/message",
                 type: "POST",
                 dataType: "json",
                 async: true,
@@ -175,7 +175,7 @@
     <div id="connect-container" class="layui-elem-field">
         <legend>Chat With STOMP Message</legend>
         <div>
-            <input id="target" type="text" class="layui-input" size="40" style="width: 350px" value="<%=contextPath%>/chat-websocket"/>
+            <input id="target" type="text" class="layui-input" size="40" style="width: 350px" value="/api/chat-websocket"/>
         </div>
         <div>
             <button id="connect" class="layui-btn layui-btn-normal" onclick="connect();">Connect</button>

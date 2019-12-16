@@ -40,6 +40,7 @@
 		<log4j-core.version>2.12.1</log4j-core.version>
 		<tomcat-embed-websocket.version>9.0.30</tomcat-embed-websocket.version>
 		<websocket-server.version>9.4.24.v20191120</websocket-server.version>
+		<stomp-websocket.version>2.3.3</stomp-websocket.version>
 	</properties>
 
 	<parent>
@@ -93,6 +94,11 @@
 			<version>${tomcat-embed-websocket.version}</version>
 		</dependency>-->
 		<!-- websocket-server -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>stomp-websocket</artifactId>
+			<version>${stomp-websocket.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty.websocket</groupId>
 			<artifactId>websocket-server</artifactId>

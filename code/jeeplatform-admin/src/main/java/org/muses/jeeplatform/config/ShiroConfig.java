@@ -27,6 +27,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/static/**", "anon");
         filterChainDefinitionMap.put("/upload/**", "anon");
         filterChainDefinitionMap.put("/plugins/**", "anon");
+        filterChainDefinitionMap.put("/layui/**", "anon");
         filterChainDefinitionMap.put("/code", "anon");
         filterChainDefinitionMap.put("/login", "anon");
         filterChainDefinitionMap.put("/logincheck", "anon");
@@ -41,8 +42,7 @@ public class ShiroConfig {
 
     @Bean
     public ShiroRealm myShiroRealm(){
-        ShiroRealm myShiroRealm = new ShiroRealm();
-        return myShiroRealm;
+        return new ShiroRealm();
     }
 
 
