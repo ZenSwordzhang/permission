@@ -4,6 +4,7 @@
 <%
     String contextPath = request.getContextPath();
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + contextPath + "/";
+    String username = (String) request.getSession().getAttribute("username");
 %>
 <html>
 <head>
@@ -110,30 +111,33 @@
 
         //向指定用户发送消息
         function sendMessage() {
-            if (stompClient != null) {
-                var receiver = $("#receiver").val();
-                var content = $("#content").val();
-                log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
-
-                $.ajax({
-                    url: "/api/live/chat/user",
-                    type: "POST",
-                    dataType: "json",
-                    async: true,
-                    data: {
-                        "receiver": receiver,
-                        "content": content
-                    },
-                    success: function (data) {
-
-                    }
-                });
-            } else {
+            if (stompClient == null) {
                 layer.msg('STOMP connection not established, please connect.', {
                     offset: 'auto'
                     ,icon: 2
                 });
+                return;
             }
+            var receiver = $("#receiver").val();
+            var content = $("#content").val();
+            var sender = $("#sender").val();
+            log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
+            $.ajax({
+                url: "/api/live/chat/user",
+                type: "POST",
+                dataType: "json",
+                contentType:'application/json',
+                // 异步请求
+                async: true,
+                data: {
+                    "receiver": receiver,
+                    "sender": sender,
+                    "content": content
+                },
+                success: function (data) {
+
+                }
+            });
         }
 
         //从服务器拉取未读消息
@@ -142,6 +146,7 @@
                 url: "/api/live/chat/message",
                 type: "POST",
                 dataType: "json",
+                contentType:'application/json',
                 async: true,
                 data: {
                     "destination": destination
@@ -185,6 +190,7 @@
 
         </div>
         <div class="message">
+            <input id="sender" type="text" value="<%=username%>" hidden>
             <input id="receiver" type="text" class="layui-input" size="40" style="width: 350px" placeholder="接收者姓名" value=""/>
             <input id="message" type="text" class="layui-input" size="40" style="width: 350px" placeholder="消息内容" value=""/>
         </div>
