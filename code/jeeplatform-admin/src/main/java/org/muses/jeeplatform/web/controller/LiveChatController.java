@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.user.SimpUser;
@@ -49,14 +50,16 @@ public class LiveChatController {
 //    }
 
     /**
-     * 给指定用户发送WebSocket消息
+     * 给指定的人发送WebSocket消息
      *
      * @param chat
      */
-    @PostMapping("/user")
-    public void handleChat(@RequestBody Chat chat) {
+    @PostMapping("/person")
+    @ResponseBody
+    public ResponseEntity handleChat(@RequestBody Chat chat) {
 //        simpMessagingTemplate.convertAndSendToUser(chat.getReceiver(), "/topic/reply", chat);
         sendToUser(chat, "/topic/reply");
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/list")

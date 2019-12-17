@@ -86,10 +86,10 @@
                 log('Info: STOMP connection opened.');
 
                 //连接成功后，主动拉取未读消息
-                pullUnreadMessage("/live/chat/message");
+                pullUnreadMessage("/topic/reply");
 
                 //订阅服务端的/topic/reply地址
-                stompClient.subscribe("/topic/reply", function (response) {
+                stompClient.subscribe("/user/topic/reply", function (response) {
                     log(JSON.parse(response.body).content);
                 })
             },function () {
@@ -123,12 +123,12 @@
             var sender = $("#sender").val();
             log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
             $.ajax({
-                url: "/api/live/chat/user",
+                url: "/api/live/chat/person",
                 type: "POST",
                 dataType: "json",
                 contentType:'application/json',
                 // 异步请求
-                async: true,
+                async: false,
                 data: {
                     "receiver": receiver,
                     "sender": sender,
@@ -147,7 +147,7 @@
                 type: "POST",
                 dataType: "json",
                 contentType:'application/json',
-                async: true,
+                async: false,
                 data: {
                     "destination": destination
                 },
@@ -192,7 +192,7 @@
         <div class="message">
             <input id="sender" type="text" value="<%=username%>" hidden>
             <input id="receiver" type="text" class="layui-input" size="40" style="width: 350px" placeholder="接收者姓名" value=""/>
-            <input id="message" type="text" class="layui-input" size="40" style="width: 350px" placeholder="消息内容" value=""/>
+            <input id="content" type="text" class="layui-input" size="40" style="width: 350px" placeholder="消息内容" value=""/>
         </div>
         <div>
             <button id="echo" class="layui-btn layui-btn-normal layui-btn-disabled" disabled="disabled"
