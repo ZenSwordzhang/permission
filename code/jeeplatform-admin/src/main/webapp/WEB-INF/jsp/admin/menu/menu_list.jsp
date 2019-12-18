@@ -140,7 +140,7 @@
         diag.Title = "编辑菜单信息";
         diag.Width = 400;
         diag.Height = 300;
-        diag.URL = "goEditM.do?menuId="+menuId;
+        diag.URL = "goEditM?menuId="+menuId;
         diag.show();
     }
 
@@ -149,7 +149,7 @@
         diag.Title = "新增菜单信息";
         diag.Width = 400;
         diag.Height = 300;
-        diag.URL = "goAddM.do";
+        diag.URL = "goAddM";
         diag.show();
     }
 

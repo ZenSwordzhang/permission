@@ -127,7 +127,7 @@
         diag.Title = "编辑角色";
         diag.Width = 400;
         diag.Height = 300;
-        diag.URL = "goEditR.do?roleId="+roleId;
+        diag.URL = "goEditR?roleId="+roleId;
         diag.show();
     }
 
@@ -136,7 +136,7 @@
         diag.Title = "新增角色";
         diag.Width = 400;
         diag.Height = 300;
-        diag.URL = "goAddR.do";
+        diag.URL = "goAddR";
         diag.show();
     }
 

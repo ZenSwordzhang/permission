@@ -128,7 +128,7 @@
                 dataType: "json",
                 contentType:'application/json',
                 // 异步请求
-                async: false,
+                async: true,
                 data: {
                     "receiver": receiver,
                     "sender": sender,
@@ -147,7 +147,7 @@
                 type: "POST",
                 dataType: "json",
                 contentType:'application/json',
-                async: false,
+                async: true,
                 data: {
                     "destination": destination
                 },
