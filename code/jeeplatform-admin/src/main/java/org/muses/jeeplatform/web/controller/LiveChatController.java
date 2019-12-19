@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.user.SimpUser;
 import org.springframework.messaging.simp.user.SimpUserRegistry;
@@ -20,14 +21,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.security.Principal;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/live/chat")
 public class LiveChatController {
 
     @Autowired
@@ -54,7 +53,7 @@ public class LiveChatController {
      *
      * @param chat
      */
-    @PostMapping("/person")
+    @MessageMapping("/person")
     @ResponseBody
     public ResponseEntity handleChat(@RequestBody Chat chat) {
 //        simpMessagingTemplate.convertAndSendToUser(chat.getReceiver(), "/topic/reply", chat);

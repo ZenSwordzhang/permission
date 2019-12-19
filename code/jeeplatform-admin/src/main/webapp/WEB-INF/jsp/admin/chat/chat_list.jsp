@@ -121,29 +121,31 @@
             var receiver = $("#receiver").val();
             var content = $("#content").val();
             var sender = $("#sender").val();
-            log('Sent: ' + JSON.stringify({'receiver': receiver, 'content':content}));
-            $.ajax({
-                url: "/api/live/chat/person",
-                type: "POST",
-                dataType: "json",
-                contentType:'application/json',
-                // 异步请求
-                async: true,
-                data: {
-                    "receiver": receiver,
-                    "sender": sender,
-                    "content": content
-                },
-                success: function (data) {
-
-                }
-            });
+            let chat = JSON.stringify({'receiver': receiver, 'content': content, 'sender': sender});
+            log('Sent: ' + chat);
+            stompClient.send("/app/person", {}, chat);
+            // $.ajax({
+            //     url: "/api/person",
+            //     type: "POST",
+            //     dataType: "json",
+            //     contentType:'application/json',
+            //     // 异步请求
+            //     async: true,
+            //     data: {
+            //         "receiver": receiver,
+            //         "sender": sender,
+            //         "content": content
+            //     },
+            //     success: function (data) {
+            //
+            //     }
+            // });
         }
 
         //从服务器拉取未读消息
         function pullUnreadMessage(destination) {
             $.ajax({
-                url: "/api/live/chat/message",
+                url: "/api/message",
                 type: "POST",
                 dataType: "json",
                 contentType:'application/json',

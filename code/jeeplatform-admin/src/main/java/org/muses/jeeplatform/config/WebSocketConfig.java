@@ -44,7 +44,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
         //服务端广播消息的路径前缀，客户端需要相应订阅/topic/yyy这个地址的消息
         registry.enableSimpleBroker("/topic");
         //给指定用户发送消息的路径前缀，默认值是/user
-        registry.setUserDestinationPrefix("/user");
+//        registry.setUserDestinationPrefix("/user");
     }
 
     @Override
