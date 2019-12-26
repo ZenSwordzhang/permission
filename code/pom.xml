@@ -13,6 +13,7 @@
 		<module>jeeplatform-admin</module>
 		<module>jeeplatform-common</module>
 		<module>jeeplatform-sso</module>
+		<module>management</module>
 	</modules>
 
 	<properties>
@@ -25,6 +26,7 @@
 		<jeeplatform-admin.version>1.0</jeeplatform-admin.version>
 		<jeeplatform-common.version>1.0</jeeplatform-common.version>
 		<jeeplatform-sso.version>1.0</jeeplatform-sso.version>
+		<management.version>1.0</management.version>
 
 		<!-- 外部依赖 -->
 		<oss.version>3.8.0</oss.version>
@@ -290,7 +292,7 @@
 						<configuration>
 							<classifier>spring-boot</classifier>
 							<mainClass>
-								org.muses.jeeplatform.Application
+								Application
 							</mainClass>
 						</configuration>
 					</execution>
