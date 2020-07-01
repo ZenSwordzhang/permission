@@ -39,7 +39,7 @@
 		<lombok.version>1.18.10</lombok.version>
 		<postgresql.version>42.2.8</postgresql.version>
 		<jedis.version>3.1.0</jedis.version>
-		<log4j-core.version>2.12.1</log4j-core.version>
+		<log4j-core.version>2.13.2</log4j-core.version>
 		<tomcat-embed-websocket.version>9.0.30</tomcat-embed-websocket.version>
 		<websocket-server.version>9.4.24.v20191120</websocket-server.version>
 		<stomp-websocket.version>2.3.3</stomp-websocket.version>
